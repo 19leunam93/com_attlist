@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_attlist</name>
+    <creationDate>2018-06-06</creationDate>
+    <copyright>2018 Manuel Häusler</copyright>
+    <license>GNU General Public License Version 2 oder später; siehe LICENSE.txt</license>
+    <author>Manuel Häusler</author>
+    <authorEmail>tech.spuur@quickline.com</authorEmail>
+    <authorUrl>https://tech.spuur.ch</authorUrl>
+    <version>0.0.6</version>
+    <description>Mit dieser Komponente können Meldungen (An- oder Abmeldungen) zu einem bestimmten Event aufgenommen werden.
+Alle Meldungen werden gesammelt und können als Anwesenheitsliste angezeigt, bzw. als PDF exportiert werden. Dazu liefert die Komponente ein Formular, mit welchem eine Meldung zu einem bestimmten Event (Beitrag, dpCalendar, JEM,...) erzeugt werden kann.
+Eine zweite Ansicht erlaubt, bei entsprechender Berechtigung Meldungen einer bestimmten Kategorie aufzulisten und als PDF zu exportieren. Mit dieser Ansicht können die Meldungen zu einem bestimmten Event auch wieder gelöscht werden.</description>
+    
+    
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update> <!-- Runs on update -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/update.mysql.utf8.sql</file>
+        </sql>
+    </update>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>attlist.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+    </files>
+    <media destination="com_attlist" folder="media">
+        <folder>js</folder>
+        <folder>css</folder>
+        <folder>img</folder>
+    </media>
+    <languages folder="site/languages">
+            <language tag="en-GB">en-GB/en-GB.com_attlist.ini</language>
+			<language tag="de-DE">de-DE/de-DE.com_attlist.ini</language>
+    </languages>
+    <administration>
+        <menu>COM_ATTLIST</menu>
+        <submenu>            
+			<menu link="option=com_attlist&amp;view=meldungen" view="meldungen" alt="Attlist/Meldungen">COM_ATTLIST_CALL_PL</menu>
+			<menu link="option=com_categories&amp;extension=com_attlist.meldungen" view="categories" alt="Attlist/Categories">COM_ATTLIST_MELDUNGEN_CATID</menu>
+
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>attlist.php</filename>
+            <folder>controllers</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+        <languages folder="administrator/languages">
+            <language tag="en-GB">en-GB/en-GB.com_attlist.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_attlist.sys.ini</language>
+			<language tag="de-DE">de-DE/de-DE.com_attlist.ini</language>
+			<language tag="de-DE">de-DE/de-DE.com_attlist.sys.ini</language>
+        </languages>
+    </administration>
+    <config>
+        <fields name="params">
+            <fieldset name="component">
+                <field name="save_history" default="0" />
+            </fieldset>
+        </fields>
+    </config>
+    <plugins>
+        <plugin group="search" plugin="attlist"/>
+    </plugins>
+    
+</extension>
