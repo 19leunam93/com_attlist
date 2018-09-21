@@ -76,7 +76,7 @@ $canEdit = AttlistHelpersAttlist::canUserEdit($this->item, $user);
 
 	<?php echo $this->form->renderField('created_by'); ?>
 
-	{easycalccheckplus}
+	<div class="controls">{easycalccheckplus}</div>
 
 			<div class="control-group">
 				<div class="controls">
