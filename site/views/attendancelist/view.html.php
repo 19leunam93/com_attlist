@@ -172,9 +172,9 @@ class AttlistViewAttendancelist extends JViewLegacy
 		$param = $this->viewParams['item_dateformat'];
 
 		$t = explode(' ', $date);
-		try {
+		if (isset($t[1])) {
 			$time = $t[1];
-		} catch (Exception $e) {
+		} else {
 			$time = '';
 		}
 		
@@ -194,6 +194,99 @@ class AttlistViewAttendancelist extends JViewLegacy
 		}
 
 		return $newDate;
+	}
+
+	/**
+	 * Create a List of event dates and List of event titles
+	 *
+	 *
+	 * @return  array  List of the two lists
+	 *
+	 */
+	public function createEventlists()
+	{	 
+		$events = array();
+		$event_titles = array();
+		foreach ($this->meldungen as $key => $entry) {
+			if ($this->meldungen[$key]['state'] == 1) {
+				if (!in_array($this->meldungen[$key]['event_date'], $events)) {
+				array_push($events, $this->meldungen[$key]['event_date']);
+				}
+				if (!in_array($this->meldungen[$key]['event_title'], $event_titles)) {
+					array_push($event_titles, $this->meldungen[$key]['event_title']);
+				}
+			}
+		}
+
+		return array($events, $event_titles);
+	}
+
+	/**
+	 * Create Tables out of fetched Data from Database
+	 *
+	 * @param   array  $events  List of events
+	 *
+	 * @return  array  List of all the entrys for the table and the statistics
+	 *
+	 */
+	public function createTableentrys($events)
+	{	 
+		$tables = array();
+		$statistics = array();
+		foreach ($events as $eventNumb => $value) {
+			$statistics[$eventNumb]['Meldungen'] = 0;
+			$statistics[$eventNumb]['Abmeldungen'] = 0;
+			$tableX = '';	
+			foreach ($this->meldungen as $key => $entry) {
+
+				if ($events[$eventNumb] == $this->meldungen[$key]['event_date']) {
+					if ($this->meldungen[$key]['present'] == 1 || $this->viewParams['view_type'] == 0) {
+						$tableX .= '<tr>
+										<td>'.$this->meldungen[$key]['name'].'</td>
+										<td>'.$this->meldungArt($this->meldungen[$key]['present']).'</td>';
+						if ($this->viewParams['view_type'] == 0) {
+						$tableX .=		'<td>'.$this->meldungen[$key]['note'].'</td>';
+						}				
+						$tableX .=		'<td>'.$this->dateFormat($this->meldungen[$key]['creation_date']).'</td>
+									</tr>';
+					}
+
+					// Count Meldungen
+					$statistics[$eventNumb]['Meldungen'] = $statistics[$eventNumb]['Meldungen'] + 1;				
+
+					// Count of Abmeldungen
+					if ($this->meldungen[$key]['present'] == 0) {
+						$statistics[$eventNumb]['Abmeldungen'] = $statistics[$eventNumb]['Abmeldungen'] + 1;
+					}
+				}
+			}
+			array_push($tables, $tableX);
+		}
+
+		return array($tables, $statistics);
+	}
+
+	/**
+	 * Erstellt den Titel
+	 *
+	 *
+	 * @return  array  Liste von 
+	 *
+	 */
+	public function createModuletitle()
+	{
+		$catName = array_search($this->viewParams['item_cat'], array_column($this->categories, 'id'));
+
+		// create the title
+		if ($this->viewParams['view_type'] == 0) {
+			$moduletitle = JText::_('COM_ATTLIST_CALL_PL').' '.JText::_('COM_ATTLIST_FOR_VIEW_ATTLIST').' '.$this->categories[$catName]['title'];
+		} elseif ($this->viewParams['view_type'] == 1) {
+			$moduletitle = JText::_('COM_ATTLIST_RECEIVED_VIEW_ATTLIST').' '.JText::_('COM_ATTLIST_PRESENT_PL');
+		} else {
+			$moduletitle = 'No view type specified';
+		}
+
+		return array($catName, $moduletitle);
 	}
 
 }

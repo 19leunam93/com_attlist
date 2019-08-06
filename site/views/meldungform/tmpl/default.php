@@ -19,6 +19,9 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// load view specific helper
+//require(JPATH_COMPONENT_SITE . '/helpers/viewMeldungform.php');
+
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
@@ -32,7 +35,6 @@ $doc->addScript(JUri::base() . '/media/com_attlist/js/form.js');
 
 $user    = JFactory::getUser();
 $canEdit = AttlistHelpersAttlist::canUserEdit($this->item, $user);
-
 
 ?>
 
@@ -59,6 +61,10 @@ $canEdit = AttlistHelpersAttlist::canUserEdit($this->item, $user);
 	<?php echo $this->form->renderField('name'); ?>
 
 	<?php echo $this->form->renderField('present'); ?>
+
+	<div <?php if ($this->viewParams['show_note'] == 0) {echo 'style="display: none;"';} ?>>
+	<?php echo $this->form->renderField('note'); ?>
+	</div>
 	
 	<div style="display: none;">
 	<?php echo $this->form->renderField('event_date'); ?>
@@ -75,8 +81,10 @@ $canEdit = AttlistHelpersAttlist::canUserEdit($this->item, $user);
 	</div>
 
 	<?php echo $this->form->renderField('created_by'); ?>
-
-	<div class="controls">{easycalccheckplus}</div>
+	
+	<?php if (JPluginHelper::isEnabled('system', 'easycalccheckplus')) : ?>
+		<div class="controls">{easycalccheckplus}</div>
+	<?php endif ; ?>	
 
 			<div class="control-group">
 				<div class="controls">
@@ -87,6 +95,7 @@ $canEdit = AttlistHelpersAttlist::canUserEdit($this->item, $user);
 						</button>
 					<?php endif; ?>
 					<a class="btn"
+					   id="cancelButton"
 					   href="<?php echo JRoute::_('index.php?option=com_attlist&task=meldungform.cancel'); ?>"
 					   title="<?php echo JText::_('JCANCEL'); ?>">
 						<?php echo JText::_('JCANCEL'); ?>
@@ -102,70 +111,5 @@ $canEdit = AttlistHelpersAttlist::canUserEdit($this->item, $user);
 	<?php endif; ?>
 </div>
 
-<script>
-	jQuery(document).ready(function(){
+<?php require(JPATH_COMPONENT_SITE . '/helpers/jsMeldungform.php'); ?>
 
-		// insert category in hidden form field
-		jQuery("#jform_catid").val("<?php echo $this->viewParams['item_cat']; ?>");
-
-		// insert eventtitle in hidden form field
-		var title = jQuery("span[id*='<?php echo $this->viewParams['title_span'];?>']").text();
-		jQuery("#jform_event_title").val(title);
-
-		var date_format = jQuery("#jform_event_date_btn").attr("data-dayformat");
-		var date = jQuery("span[id*='<?php echo $this->viewParams['item_span'];?>']").text();
-		var date_corrected = "";
-
-		if (<?php echo $this->viewParams['item_dateformat']; ?> == 1) {
-			date_corrected = date;
-		} else if (<?php echo $this->viewParams['item_dateformat']; ?> == 0){
-			//split date to parts (dd.mm.YYYY)
-			var parts = date.split(".");
-			date_corrected = parts[2] + "-" + parts[1] + "-" + parts[0];
-
-		} else if (<?php echo $this->viewParams['item_dateformat']; ?> == 2){
-			//split date to parts (mm/dd/YYYY)
-			var parts = date.split("/");
-			date_corrected = String(parts[2]) + "-" + String(parts[0]) + "-" + String(parts[1]);
-
-		} else {
-			var message1 = {};
-			message1.warning = [];
-			message1.warning.push('<?php echo JText::_('COM_ATTLIST_DATEFORMAT_ITEM_VIEW_FORM');?>');
-			Joomla.renderMessages(message1);
-		}
-
-		if (date_format == '%Y-%m-%d') {
-
-			setTimeout(function(){
-				jQuery("#jform_event_date").attr("data-alt-value",date_corrected);
-				jQuery("#jform_event_date").attr("data-local-value",date_corrected);
-				jQuery("#jform_event_date").val(date_corrected);
-			},500);	
-
-		} else {
-			var message2 = {};
-			message2.warning = [];
-			message2.warning.push('<?php echo JText::_('COM_ATTLIST_DATEFORMAT_ITEM_VIEW_FORM');?>');
-			Joomla.renderMessages(message2);
-		}
-
-		if (date.length == null || date.length == 0) {
-			var message3 = {};
-			message3.warning = [];
-			message3.warning.push('<?php echo JText::_('COM_ATTLIST_WARNING_EVENTDATE_VIEW_MELDUNGFORM');?>');
-			Joomla.renderMessages(message3);
-			
-			console.log('<?php echo JText::_('COM_ATTLIST_LOG_EVENTDATE_VIEW_MELDUNGFORM');?>');
-		}
-
-		if (title.length == null || title.length == 0) {
-			var message4 = {};
-			message4.warning = [];
-			message4.warning.push('<?php echo JText::_('COM_ATTLIST_WARNING_EVENTTITLE_VIEW_MELDUNGFORM');?>');
-			Joomla.renderMessages(message4);
-			
-			console.log('<?php echo JText::_('COM_ATTLIST_LOG_EVENTTITLE_VIEW_MELDUNGFORM');?>');
-		}
-	});
-</script>

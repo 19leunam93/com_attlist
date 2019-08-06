@@ -137,7 +137,7 @@ class AttlistControllerMeldungForm extends JControllerForm
 
 			// Redirect back to the edit screen.
 			$id = (int) $app->getUserState('com_attlist.edit.meldung.id');
-			$this->setMessage(JText::sprintf('Save failed', $model->getError()), 'warning');
+			$this->setMessage(JText::sprintf('Save failed', $model->getError()), 'error');
 			$this->setRedirect(JRoute::_('index.php?option=com_attlist&view=meldungform&layout=edit&id=' . $id, false));
 		}
 
@@ -151,7 +151,7 @@ class AttlistControllerMeldungForm extends JControllerForm
 		$app->setUserState('com_attlist.edit.meldung.id', null);
 
 		// Redirect to the list screen.
-		$this->setMessage(JText::_('COM_ATTLIST_ITEM_SAVED_SUCCESSFULLY'));
+		$this->setMessage(JText::_('COM_ATTLIST_ITEM_SAVED_SUCCESSFULLY'), 'message');
 		$menu = JFactory::getApplication()->getMenu();
 		$item = $menu->getActive();
 		$url  = (empty($item->link) ? 'index.php?option=com_attlist&view=meldungen' : $item->link);
@@ -234,4 +234,16 @@ class AttlistControllerMeldungForm extends JControllerForm
             $this->setRedirect('index.php?option=com_attlist&view=meldungen');
         }
     }
+
+    public function checkCall()
+	{
+		if (!JSession::checkToken('get')) 
+        {
+            echo new JResponseJson(null, JText::_('JINVALID_TOKEN'), true);
+        }
+        else 
+        {
+            parent::display();
+        }
+	}
 }

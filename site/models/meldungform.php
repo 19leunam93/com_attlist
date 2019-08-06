@@ -177,13 +177,19 @@ class AttlistModelMeldungForm extends JModelForm
             $dateformat = 'dateformat-Parameter existiert nicht';
         }
 
+        if (isset($params_array['show_note'])) {
+            $show_note = $params_array['show_note'];
+        } else {
+            $show_note = 'show_note-Parameter existiert nicht';
+        }
+
         if (isset($params_array['title_span'])) {
             $title_span = $params_array['title_span'];
         } else {
             $title_span = 'title_span-Parameter existiert nicht';
         }
 
-        return array('item_cat'=>$category,'item_span'=>$span, 'title_span'=>$title_span, 'item_dateformat'=>$dateformat);
+        return array('item_cat'=>$category,'item_span'=>$span, 'title_span'=>$title_span, 'item_dateformat'=>$dateformat, 'show_note'=>$show_note);
     }
 
 

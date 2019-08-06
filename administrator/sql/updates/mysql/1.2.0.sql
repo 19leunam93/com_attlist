@@ -1,0 +1,1 @@
+ALTER TABLE `#__attlist_item` ADD `note` TEXT NOT NULL;

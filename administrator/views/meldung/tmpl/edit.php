@@ -1,6 +1,6 @@
 <?php
 /**
- * @version    CVS: 1.0.0
+ * @version    CVS: 1.2.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
  * @copyright  2018 Manuel Häusler
@@ -65,6 +65,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_attlist/css/form.css');
 				<input type="hidden" name="jform[state]" value="<?php echo $this->item->state; ?>" />
 				<?php echo $this->form->renderField('name'); ?>
 				<?php echo $this->form->renderField('present'); ?>
+				<?php echo $this->form->renderField('note'); ?>
 				<?php echo $this->form->renderField('event_date'); ?>
 				<?php echo $this->form->renderField('event_title'); ?>
 

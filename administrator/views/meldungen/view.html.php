@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version    CVS: 1.0.0
+ * @version    CVS: 1.2.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
  * @copyright  2018 Manuel Häusler
@@ -68,7 +68,7 @@ class AttlistViewMeldungen extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = AttlistHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_ATTLIST_CALL_PL'), 'meldungen.png');
+		JToolBarHelper::title(JText::_('COM_ATTLIST_CALL_PL'), 'pencil.png');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/meldung';
@@ -153,7 +153,8 @@ class AttlistViewMeldungen extends JViewLegacy
 			'a.`state`' => JText::_('JSTATUS'),
 			'a.`name`' => JText::_('COM_ATTLIST_NAME'),
 			'a.`present`' => JText::_('COM_ATTLIST_CALL_SING'),
-			'a.`event_date`' => JText::_('COM_ATTLIST_EVENT_DATE'),
+			'a.`event_title`' => JText::_('COM_ATTLIST_EVENT_TITLE'),
+			'a.`event_date`' => JText::_('COM_ATTLIST_EVENT_DATE'), 
 			'a.`creation_date`' => JText::_('COM_ATTLIST_SUBMIT_DATE'),
 			'a.`catid`' => JText::_('COM_ATTLIST_MELDUNGEN_CATID'),
 			'a.`created_by`' => JText::_('COM_ATTLIST_MELDUNGEN_CREATED_BY'),

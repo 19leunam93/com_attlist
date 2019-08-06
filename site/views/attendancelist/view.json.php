@@ -34,6 +34,7 @@ class AttlistViewAttendancelist extends JViewLegacy
 		// echo new JResponseJson('Ajax successful');
 
 		$jinput = JFactory::getApplication()->input;
+		$params = JFactory::getApplication()->getParams();
 
 		// get the data from the HTTP POST request
 		//$data  = $_POST;
@@ -52,18 +53,20 @@ class AttlistViewAttendancelist extends JViewLegacy
 
 		//generate PDF
 		require_once(JPATH_COMPONENT_SITE . '/helpers/TCPDF/tcpdf.php');
-		$obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		require_once(JPATH_COMPONENT_SITE . '/helpers/MyTCPDF.php');
+
+		$obj_pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$obj_pdf->SetCreator(PDF_CREATOR);
 		$obj_pdf->SetTitle('Meldungen für ' . $data['eventCat']);
-		$obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);
+		$obj_pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 		$obj_pdf->SetFooterData(array(0,64,0), array(0,64,128));
 		$obj_pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 		$obj_pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 		$obj_pdf->SetDefaultMonospacedFont('helvetica');
 		$obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-		$obj_pdf->SetMargins(PDF_MARGIN_LEFT, '10', PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-		$obj_pdf->setPrintHeader(false);
-		$obj_pdf->setPrintFooter(false);
+		$obj_pdf->SetMargins(PDF_MARGIN_LEFT, '50', PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$obj_pdf->setPrintHeader(true);
+		$obj_pdf->setPrintFooter(true);
 		$obj_pdf->SetAutoPageBreak(TRUE, 10);
 		$obj_pdf->SetFont('helvetica', '', 11);
 		$obj_pdf->AddPage('P', 'A4');  // L: Landscape  P: Portrait
@@ -74,15 +77,15 @@ class AttlistViewAttendancelist extends JViewLegacy
 		$content .= '<h2>' . $data['eventTitle'] . ' vom ' . $data['eventDate'] . ':</h2><br />';
 		$content .= '<table border="1" cellpadding="2">
 		            <tr class="table_heading" style="font-weight: bold;">
-		                <th width="30%">'.JText::_('COM_ATTLIST_NAME').'</th>
-		                <th width="30%">'.JText::_('COM_ATTLIST_CALL_SING').'</th> 
-		                <th width="40%">'.JText::_('COM_ATTLIST_SUBMIT_DATE').'</th> 
+		                <th width="20%">'.JText::_('COM_ATTLIST_NAME').'</th>
+		                <th width="20%">'.JText::_('COM_ATTLIST_CALL_SING').'</th>
+		                <th width="30%">'.JText::_('COM_ATTLIST_NOTE').'</th>
+		                <th width="30%">'.JText::_('COM_ATTLIST_SUBMIT_DATE').'</th> 
 		            </tr>';
 		$content .= $table . '</table>';
 		$content .= '<p>'.JText::_('COM_ATTLIST_NUMBEROF_VIEW_ATTLIST').' '.JText::_('COM_ATTLIST_CALL_PL').': ' . $data['eventStat_Numb'] . '</p>';
 		$content .= '<p>'.JText::_('COM_ATTLIST_NUMBEROF_VIEW_ATTLIST').' '.JText::_('COM_ATTLIST_ABSENT_PL').': ' . $data['eventStat_Ab'] . '</p>';
 		$content .= '<p style="height: 100px;"><p>';
-		$content .= '<br /><p>'.JText::_('COM_ATTLIST_PRINT_DATE_PDF').' '.date("d.m.Y, H:i \U\H\R").'</p>';
 
 		//paste content into the PDF
 		//$obj_pdf->setCellHeightRatio(1.25);

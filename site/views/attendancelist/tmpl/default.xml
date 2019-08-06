@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?> 
 <metadata>
     <layout title="COM_ATTLIST_TITLE_VIEW_ATTLIST" option="View">
         <message>
@@ -9,10 +9,24 @@
         <fieldset 
             name="basic"
             label="COM_ATTLIST_FIELDSET_ITEM_ID_SELECT_LABEL">
+
+            <field
+                name="view_type"
+                type="radio"
+                default="0"
+                label="COM_ATTLIST_VIEWTYPE_LABEL_FORM"
+                description="COM_ATTLIST_VIEWTYPE_DESC_FORM"
+                class="btn-group btn-group-yesno">
+
+              <option value="0">COM_ATTLIST_VIEWTYPE_0</option>
+              <option value="1">COM_ATTLIST_VIEWTYPE_1</option>
+            </field>
+
             <field
                 name="item_cat"
                 type="category"
                 default=""
+                required="true"
                 extension="com_attlist.meldungen"
                 label="COM_ATTLIST_CATEGORY_LABEL_FORM"
                 description="COM_ATTLIST_CATEGORY_DESC_FORM">
@@ -28,6 +42,28 @@
                 <option value="0">dd.mm.YYYY</option>
                 <option value="1">YYYY-mm-dd</option>
                 <option value="2">mm/dd/YYYY</option>
+            </field>
+
+            <field type="spacer" name="spacer1" hr="true" />
+            <field name="note2" type="note" label="span-ID" class="h2"/>
+            <field name="note3" type="note" label="COM_ATTLIST_SPANID_LABEL_FORM" class="p"/>
+
+            <field
+                name="item_span"
+                type="text"
+                default="attlist_eventdateID"
+                filter="raw"
+                label="Date (span-ID)"
+                description="COM_ATTLIST_SPAN_DESC_FORM">
+            </field>
+
+            <field
+                name="title_span"
+                type="text"
+                default="attlist_eventtitleID"
+                filter="raw"
+                label="Title (span-ID)"
+                description="COM_ATTLIST_TITLESPAN_DESC_FORM">
             </field>
 
         </fieldset>

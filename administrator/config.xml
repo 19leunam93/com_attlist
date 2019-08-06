@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-    <fieldset label="COM_ATTLIST" name="attlist">
+    <fieldset label="COM_ATTLIST_LANGUAGE_OVERRIDE_LBL" name="attlist">
+        <field name="note1" type="note" label="COM_ATTLIST_CONFIG_INFO_LBL" description="COM_ATTLIST_CONFIG_INFO_DESC" />
     </fieldset>
 
-    <fieldset name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
-        <field name="rules" type="rules" component="com_attlist" class="inputbox" filter="rules" validate="rules" label="JCONFIG_PERMISSIONS_LABEL" section="component" />
-	</fieldset>
-
-    <fieldset name="component">
+    <fieldset name="settings" label="COM_ATTLIST_FIELDSET_ITEM_ID_SELECT_LABEL">
+        <field name="pdf_logo" type="media" label="COM_ATTLIST_XML_PDFLOGO_LBL" description="COM_ATTLIST_XML_PDFLOGO_DESC"/>
+        <field name="place_logo" type="list" default="2" label="COM_ATTLIST_XML_PLACELOGO_LBL" description="COM_ATTLIST_XML_PLACELOGO_DESC">
+            <option value="0">JGLOBAL_LEFT</option>
+            <option value="1">JGLOBAL_CENTER</option>
+            <option value="2">JGLOBAL_RIGHT</option>
+        </field>
+        <field name="pdf_source" type="text" label="COM_ATTLIST_XML_PDFSOURCE_LBL" description="COM_ATTLIST_XML_PDFSOURCE_DESC"/>
+        <field type="spacer" name="spacer1" hr="true" />
         <field name="save_history" type="radio" class="btn-group btn-group-yesno" default="0" label="JGLOBAL_SAVE_HISTORY_OPTIONS_LABEL" description="JGLOBAL_SAVE_HISTORY_OPTIONS_DESC">
             <option value="0">JNO</option>
             <option value="1">JYES</option>
         </field>
-
         <field name="history_limit" type="text" filter="integer" label="JGLOBAL_HISTORY_LIMIT_OPTIONS_LABEL" description="JGLOBAL_HISTORY_LIMIT_OPTIONS_DESC" default="5"/>
     </fieldset>
+
+    <fieldset name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
+        <field name="rules" type="rules" component="com_attlist" class="inputbox" filter="rules" validate="rules" label="JCONFIG_PERMISSIONS_LABEL" section="component" />
+	</fieldset>   
+
 </config>

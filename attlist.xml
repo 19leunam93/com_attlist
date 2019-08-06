@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <extension type="component" version="3.0" method="upgrade">
     <name>com_attlist</name>
-    <creationDate>2018-06-06</creationDate>
-    <copyright>2018 Manuel Häusler</copyright>
+    <creationDate>2019-09-01</creationDate>
+    <copyright>2019 Manuel Häusler</copyright>
     <license>GNU General Public License Version 2 oder später; siehe LICENSE.txt</license>
     <author>Manuel Häusler</author>
     <authorEmail>tech.spuur@quickline.com</authorEmail>
     <authorUrl>https://tech.spuur.ch</authorUrl>
-    <version>0.0.6</version>
-    <description>Mit dieser Komponente können Meldungen (An- oder Abmeldungen) zu einem bestimmten Event aufgenommen werden.
-Alle Meldungen werden gesammelt und können als Anwesenheitsliste angezeigt, bzw. als PDF exportiert werden. Dazu liefert die Komponente ein Formular, mit welchem eine Meldung zu einem bestimmten Event (Beitrag, dpCalendar, JEM,...) erzeugt werden kann.
-Eine zweite Ansicht erlaubt, bei entsprechender Berechtigung Meldungen einer bestimmten Kategorie aufzulisten und als PDF zu exportieren. Mit dieser Ansicht können die Meldungen zu einem bestimmten Event auch wieder gelöscht werden.</description>
-    
-    
+    <version>1.2.0</version>
+    <description>COM_ATTLIST_XML_DESCRIPTION</description>
     
     <install> <!-- Runs on install -->
         <sql>
@@ -20,9 +16,9 @@ Eine zweite Ansicht erlaubt, bei entsprechender Berechtigung Meldungen einer bes
         </sql>
     </install>
     <update> <!-- Runs on update -->
-        <sql>
-            <file driver="mysql" charset="utf8">sql/update.mysql.utf8.sql</file>
-        </sql>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
     </update>
     <uninstall> <!-- Runs on uninstall -->
         <sql>
@@ -51,7 +47,8 @@ Eine zweite Ansicht erlaubt, bei entsprechender Berechtigung Meldungen einer bes
     </languages>
     <administration>
         <menu>COM_ATTLIST</menu>
-        <submenu>            
+        <submenu>
+            <menu link="option=com_attlist&amp;view=dashboard" view="dashboard" alt="Attlist/Dashboard">COM_ATTLIST_DASHBOARD</menu>            
 			<menu link="option=com_attlist&amp;view=meldungen" view="meldungen" alt="Attlist/Meldungen">COM_ATTLIST_CALL_PL</menu>
 			<menu link="option=com_categories&amp;extension=com_attlist.meldungen" view="categories" alt="Attlist/Categories">COM_ATTLIST_MELDUNGEN_CATID</menu>
 

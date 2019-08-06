@@ -241,11 +241,11 @@ class AttlistModelAttendancelist extends JModelList
         $db = JFactory::getDbo();
         //Retrieve the shout
         $query = $db->getQuery(true)
-                    ->select(array('state','name', 'present', 'event_date', 'event_title','creation_date'))
+                    ->select(array('state','name', 'present', 'note','event_date', 'event_title','creation_date'))
                     ->from($db->quoteName('#__attlist_item'))
                     ->where($db->quoteName('catid') . '=' . $category)
                     ->order('present DESC')
-                    ->order('event_date ASC');
+                    ->order('event_date DESC');
         // Prepare the query
         $db->setQuery($query);
         // Load the row.
@@ -270,19 +270,37 @@ class AttlistModelAttendancelist extends JModelList
         $params       = $app->getParams();
         $params_array = $params->toArray();
 
+        if (isset($params_array['view_type'])) {
+            $viewtype = $params_array['view_type'];
+        } else {
+            $viewtype = 'viewtype-Parameter does not exist';
+        }
+
         if (isset($params_array['item_cat'])) {
             $category = $params_array['item_cat'];
         } else {
-            $category = 'category-Parameter existiert nicht';
+            $category = 'category-Parameter does not exist';
         }
 
         if (isset($params_array['item_dateformat'])) {
             $dateformat = $params_array['item_dateformat'];
         } else {
-            $dateformat = 'dateformat-Parameter existiert nicht';
+            $dateformat = 'dateformat-Parameter does not exist';
         }
 
-        return array('item_cat'=>$category,'item_dateformat'=>$dateformat);
+        if (isset($params_array['item_span'])) {
+            $itemspan = $params_array['item_span'];
+        } else {
+            $itemspan = 'item_span-Parameter does not exist';
+        }
+
+        if (isset($params_array['title_span'])) {
+            $titlespan = $params_array['title_span'];
+        } else {
+            $titlespan = 'title_span-Parameter does not exist';
+        }
+
+        return array('item_cat'=>$category,'item_dateformat'=>$dateformat,'view_type'=>$viewtype, 'item_span'=>$itemspan, 'title_span'=>$titlespan);
     }
 
 	/**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version    CVS: 1.0.0
+ * @version    CVS: 1.2.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
  * @copyright  2018 Manuel Häusler
@@ -34,14 +34,15 @@ class AttlistModelMeldungen extends JModelList
 		{
 			$config['filter_fields'] = array(
 				'id', 'a.`id`',
+				'catid', 'a.`catid`',
 				'state', 'a.`state`',
 				'name', 'a.`name`',
 				'present', 'a.`present`',
 				'event_date', 'a.`event_date`',
 				'event_title', 'a.`event_title`',
 				'creation_date', 'a.`creation_date`',
-				'catid', 'a.`catid`',
 				'created_by', 'a.`created_by`',
+				'note', 'a.`note`',
 			);
 		}
 
@@ -193,8 +194,8 @@ class AttlistModelMeldungen extends JModelList
 			$query->where("a.`catid` = '".$db->escape($filter_catid)."'");
 		}
 		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering');
-		$orderDirn = $this->state->get('list.direction');
+		$orderCol  = $this->state->get('list.ordering', "a.id");
+		$orderDirn = $this->state->get('list.direction', "ASC");
 
 		if ($orderCol && $orderDirn)
 		{

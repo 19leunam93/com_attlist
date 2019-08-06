@@ -8,15 +8,82 @@
       <option value="2">JARCHIVED</option>
       <option value="-2">JTRASHED</option>
     </field>
-    <field name="name" filter="safehtml" type="text" required="true" message="Bitte einen Namen eingeben" label="COM_ATTLIST_NAME" description="COM_ATTLIST_FORM_DESC_MELDUNG_NAME" hint="COM_ATTLIST_NAME"/>
-    <field name="present" default="1" type="radio" required="true" label="COM_ATTLIST_CALL_SING" description="COM_ATTLIST_FORM_DESC_MELDUNG_PRESENT" hint="COM_ATTLIST_CALL_SING">
-      <option value="1">COM_ATTLIST_OPTION_1</option>
-      <option value="0">COM_ATTLIST_OPTION_0</option>
+    <field
+      name="name"
+      filter="safehtml"
+      type="text"
+      required="true"
+      message="Bitte einen Namen eingeben"
+      label="COM_ATTLIST_NAME"
+      description="COM_ATTLIST_FORM_DESC_MELDUNG_NAME"
+      hint="COM_ATTLIST_NAME"/>
+    <field
+      name="present"
+      default="1"
+      type="radio"
+      required="true"
+      label="COM_ATTLIST_CALL_SING"
+      description="COM_ATTLIST_FORM_DESC_MELDUNG_PRESENT"
+      hint="COM_ATTLIST_CALL_SING">
+        <option value="1">COM_ATTLIST_OPTION_1</option>
+        <option value="0">COM_ATTLIST_OPTION_0</option>
+	<field
+	  name="note"
+	  filter="safehtml"
+	  type="textarea"
+	  label="COM_ATTLIST_NOTE"
+	  description="COM_ATTLIST_FORM_DESC_MELDUNG_NOTE"
+	  hint="COM_ATTLIST_NOTE"/>
     </field>
-    <field name="event_date" class="inputbox" timeformat="24" filter="user_utc" minyear="2000" maxyear="9999" showtime="false" singleheader="false" todaybutton="true" weeknumbers="false" filltable="false" type="calendar" required="true" message="Bitte ein Eventdatum auswählen" label="COM_ATTLIST_FORM_LBL_MELDUNG_EVENT_DATE" description="COM_ATTLIST_FORM_DESC_MELDUNG_EVENT_DATE" hint="COM_ATTLIST_FORM_LBL_MELDUNG_EVENT_DATE"/>
-    <field name="event_title" filter="safehtml" type="text" required="true" message="Bitte Titel angeben" label="COM_ATTLIST_EVENT_TITLE" description="COM_ATTLIST_FORM_DESC_MELDUNG_EVENT_TITLE" hint="COM_ATTLIST_EVENT_TITLE"/>
-    <field name="creation_date" type="timecreated" label="COM_ATTLIST_SUBMIT_DATE" description="COM_ATTLIST_FORM_DESC_MELDUNG_CREATION_DATE" hidden="true" hint="COM_ATTLIST_SUBMIT_DATE"/>
-    <field name="catid" extension="com_attlist.meldungen" type="category" required="true" message="Bitte eine Kategorie auswählen" label="COM_ATTLIST_FORM_LBL_MELDUNG_CATID" description="COM_ATTLIST_FORM_DESC_MELDUNG_CATID" hint="COM_ATTLIST_FORM_LBL_MELDUNG_CATID"/>
-    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+    <field 
+      name="event_date"
+      class="inputbox"
+      timeformat="24"
+      minyear="-1"
+      maxyear="0"
+      showtime="false"
+      singleheader="false"
+      todaybutton="true"
+      weeknumbers="false"
+      filltable="false"
+      type="calendar"
+      required="true"
+      message="Bitte ein Eventdatum auswählen"
+      label="COM_ATTLIST_EVENT_DATE"
+      description="COM_ATTLIST_FORM_DESC_MELDUNG_EVENT_DATE"
+      hint="COM_ATTLIST_EVENT_DATE"/>
+    <field
+      name="event_title"
+      filter="safehtml"
+      type="text"
+      required="true"
+      message="Bitte Titel angeben"
+      label="COM_ATTLIST_EVENT_TITLE"
+      description="COM_ATTLIST_FORM_DESC_MELDUNG_EVENT_TITLE"
+      hint="COM_ATTLIST_EVENT_TITLE"/>
+    <field
+      name="creation_date"
+      type="timecreated"
+      label="COM_ATTLIST_SUBMIT_DATE"
+      description="COM_ATTLIST_FORM_DESC_MELDUNG_CREATION_DATE"
+      hidden="true"
+      hint="COM_ATTLIST_SUBMIT_DATE"/>
+    <field
+      name="catid"
+      extension="com_attlist.meldungen"
+      type="category"
+      required="true"
+      message="Bitte eine Kategorie auswählen"
+      label="COM_ATTLIST_FORM_LBL_MELDUNG_CATID"
+      description="COM_ATTLIST_FORM_DESC_MELDUNG_CATID"
+      hint="COM_ATTLIST_FORM_LBL_MELDUNG_CATID"/>
+    <field
+      name="version_note"
+      type="text"
+      label="JGLOBAL_FIELD_VERSION_NOTE_LABEL"
+      description="JGLOBAL_FIELD_VERSION_NOTE_DESC"
+      class="inputbox"
+      size="45"
+      labelclass="control-label"/>
   </fieldset>
 </form>

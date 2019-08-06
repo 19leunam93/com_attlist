@@ -1,6 +1,6 @@
-<?php
+<?php 
 /**
- * @version    CVS: 1.0.0
+ * @version    CVS: 1.2.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
  * @copyright  2018 Manuel Häusler
@@ -76,6 +76,9 @@ $sortFields = $this->getSortFields();
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ATTLIST_CALL_SING', 'a.`present`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_ATTLIST_EVENT_TITLE', 'a.`event_title`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ATTLIST_EVENT_DATE', 'a.`event_date`', $listDirn, $listOrder); ?>
@@ -159,6 +162,9 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->present; ?>
+				</td>				<td>
+
+					<?php echo $item->event_title; ?>
 				</td>				<td>
 
 					<?php echo $item->event_date; ?>

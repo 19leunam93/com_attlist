@@ -21,6 +21,9 @@ defined('_JEXEC') or die;
 // Include dependancies
 jimport('joomla.application.component.controller');
 
+JLoader::register('AttlistHelperAttendancelist', JPATH_COMPONENT . '/helpers/attendancelist.php');
+JLoader::register('AttlistHelperMeldungform', JPATH_COMPONENT . '/helpers/meldungform.php');
+
 JLoader::registerPrefix('Attlist', JPATH_COMPONENT);
 JLoader::register('AttlistController', JPATH_COMPONENT . '/controller.php');
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version    CVS: 1.0.0
+ * @version    CVS: 1.2.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
  * @copyright  2018 Manuel Häusler
@@ -26,6 +26,12 @@ class AttlistHelper
 	 */
 	public static function addSubmenu($vName = '')
 	{
+		JHtmlSidebar::addEntry(
+			JText::_('COM_ATTLIST_DASHBOARD'),
+			'index.php?option=com_attlist&view=dashboard',
+			$vName == 'dashboard'
+		);
+
 		JHtmlSidebar::addEntry(
 			JText::_('COM_ATTLIST_CALL_PL'),
 			'index.php?option=com_attlist&view=meldungen',

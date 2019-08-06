@@ -10,6 +10,8 @@
             name="basic"
             label="COM_ATTLIST_FIELDSET_ITEM_ID_SELECT_LABEL">
 
+            <field name="note_message" type="note" class="alert security-msg" label="COM_ATTLIST_MESSAGE_LABEL_FORM" description="COM_ATTLIST_MESSAGE_DESC_FORM" />
+
             <field name="note1" type="note" label="Allgemein" class="h2"/>
 
             <field
@@ -20,6 +22,7 @@
                 value_field="id"
                 label="COM_ATTLIST_ITEM_ID_SELECT_LABEL"
                 require="true"
+                class="hidden"
                 description="COM_ATTLIST_ITEM_ID_SELECT_LABEL_FORM">
             </field>
 
@@ -42,6 +45,17 @@
                 <option value="0">dd.mm.YYYY</option>
                 <option value="1">YYYY-mm-dd</option>
                 <option value="2">mm/dd/YYYY</option>
+            </field>
+
+            <field
+                name="show_note"
+                type="radio"
+                default="0"
+                label="COM_ATTLIST_NOTE"
+                description="COM_ATTLIST_NOTE_DESC_FORM"
+                class="btn-group btn-group-yesno">
+              <option value="1">JYES</option>
+              <option value="0">JNO</option>
             </field>
 
             <field type="spacer" name="spacer1" hr="true" />

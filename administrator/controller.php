@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version    CVS: 1.0.0
+ * @version    CVS: 1.2.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
  * @copyright  2018 Manuel Häusler
@@ -29,7 +29,7 @@ class AttlistController extends JControllerLegacy
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
-		$view = JFactory::getApplication()->input->getCmd('view', 'meldungen');
+		$view = JFactory::getApplication()->input->getCmd('view', 'dashboard');
 		JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);
