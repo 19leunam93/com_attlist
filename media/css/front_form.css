@@ -4,7 +4,7 @@
     border-collapse: collapse;
     width: 100%;
 }
-.attlist td, th {
+.attlist td, .attlist th {
     border: 1px solid #000000;
     text-align: left;
     padding: 8px;
