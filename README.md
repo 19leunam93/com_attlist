@@ -1,5 +1,5 @@
 # com_attlist
-Eine Joomla! Komponente, um Meldungen (Anmeldung oder Abmeldung) zu veröffentlichten Events aufzunehmen. Die Meldungen werden pro Event in Anwesenheitslisten geordnet und können in übersichtlichen Tabellen angeschaut oder als PDF heruntergeladen werden. Per ACL können die Komponenten-Berechtigungen zum erstellen, bearbeiten oder löschen der Meldungen gesetzt werden.
+Eine Komponente, um An- und Abmeldungen zu gegebenen Event aufzunehmen. Die Meldungen werden pro Event in Anwesenheitslisten geordnet und können in übersichtlichen Tabellen angeschaut oder heruntergeladen werden. Per ACL können die Komponenten-Berechtigungen zum erstellen, bearbeiten oder löschen der Meldungen gesetzt werden.
 
 ## Getting Started
 ### Installation
@@ -16,6 +16,6 @@ Eine Demo-Webseite mit der Komponente kann unter https://joomla-demo.spuur.ch/in
 Ein ausführliches Tutorial über die Installation und Konfiguration der Komponente, sowie über die erstellung der Ansichten ist unter https://joomla-demo.spuur.ch/index.php/com-attlist/tutorial zu finden.
 
 ## Spenden
-Falls dir das Modul gefällt, bin ich als Student immer froh um eine kleine Unterstützung meines Webdesign-Hobbys:
+Falls dir die Komponente gefällt, bin ich immer froh um eine kleine Unterstützung meines Webdesign-Hobbys:
 
 [![](https://www.paypalobjects.com/de_DE/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C28HUM53S6EC2)
