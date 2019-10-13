@@ -12,6 +12,9 @@ Alles weitere wird in den jeweiligen Menü-Einstellungen der Ansichten eingestel
 ## Demo
 Eine Demo-Webseite mit der Komponente kann unter https://joomla-demo.spuur.ch/index.php/com-attlist gefunden werden.
 
+## Schritt-für-Schritt Tutorial
+Ein ausführliches Tutorial über die Installation und Konfiguration der Komponente, sowie über die erstellung der Ansichten ist unter https://joomla-demo.spuur.ch/index.php/com-attlist/tutorial zu finden.
+
 ## Spenden
 Falls dir das Modul gefällt, bin ich als Student immer froh um eine kleine Unterstützung meines Webdesign-Hobbys:
 
