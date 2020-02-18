@@ -137,6 +137,8 @@ class AttlistControllerMeldungForm extends JControllerForm
 
 			// Redirect back to the edit screen.
 			$id = (int) $app->getUserState('com_attlist.edit.meldung.id');
+			$menu = $app->getMenu()->getActive();
+			$app->enqueueMessage($menu, 'warning'); //Manuel
 			$this->setMessage(JText::sprintf('Save failed', $model->getError()), 'error');
 			$this->setRedirect(JRoute::_('index.php?option=com_attlist&view=meldungform&layout=edit&id=' . $id, false));
 		}
@@ -154,8 +156,15 @@ class AttlistControllerMeldungForm extends JControllerForm
 		$this->setMessage(JText::_('COM_ATTLIST_ITEM_SAVED_SUCCESSFULLY'), 'message');
 		$menu = JFactory::getApplication()->getMenu();
 		$item = $menu->getActive();
-		$url  = (empty($item->link) ? 'index.php?option=com_attlist&view=meldungen' : $item->link);
-		$this->setRedirect(JRoute::_($url, false));
+		if (empty($item->link) || empty($item->id)) {
+			$url  = 'index.php?option=com_attlist&view=meldungen';
+		} else {
+			$url  = $item->link . '&Itemid=' . $item->id;
+		}
+		//$url  = (empty($item->link) ? 'index.php?option=com_attlist&view=meldungen' : $item->link);
+		//print_r($item); //Manuel
+		//$this->setRedirect(JRoute::_($url, false));
+		$this->setRedirect(JRoute::_($url, true));
 
 		// Flush the data from the session.
 		$app->setUserState('com_attlist.edit.meldung.data', null);
