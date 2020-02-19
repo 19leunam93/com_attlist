@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <extension type="component" version="3.0" method="upgrade">
     <name>com_attlist</name>
-    <creationDate>2019-09-01</creationDate>
-    <copyright>2019 Manuel Häusler</copyright>
+    <creationDate>February 2020</creationDate>
+    <copyright>2020 Manuel Häusler</copyright>
     <license>GNU General Public License Version 2 oder später; siehe LICENSE.txt</license>
     <author>Manuel Häusler</author>
     <authorEmail>tech.spuur@quickline.com</authorEmail>
     <authorUrl>https://tech.spuur.ch</authorUrl>
-    <version>1.2.0</version>
+    <version>1.0.0</version>
     <description>COM_ATTLIST_XML_DESCRIPTION</description>
     
+    <!-- Runs on install/uninstall/update; New in 2.5 -->
+    <scriptfile>script.php</scriptfile>
+
     <install> <!-- Runs on install -->
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -41,7 +44,7 @@
         <folder>css</folder>
         <folder>img</folder>
     </media>
-    <languages folder="site/languages">
+    <languages folder="site/language">
             <language tag="en-GB">en-GB/en-GB.com_attlist.ini</language>
 			<language tag="de-DE">de-DE/de-DE.com_attlist.ini</language>
     </languages>
@@ -66,12 +69,13 @@
             <folder>sql</folder>
             <folder>tables</folder>
             <folder>views</folder>
+            <folder>language</folder>
         </files>
-        <languages folder="administrator/languages">
-            <language tag="en-GB">en-GB/en-GB.com_attlist.ini</language>
-            <language tag="en-GB">en-GB/en-GB.com_attlist.sys.ini</language>
-			<language tag="de-DE">de-DE/de-DE.com_attlist.ini</language>
-			<language tag="de-DE">de-DE/de-DE.com_attlist.sys.ini</language>
+        <languages folder="administrator">
+            <language tag="en-GB">language/en-GB/en-GB.com_attlist.ini</language>
+            <!-- <language tag="en-GB">language/en-GB/en-GB.com_attlist.sys.ini</language> -->
+			<language tag="de-DE">language/de-DE/de-DE.com_attlist.ini</language>
+			<!-- <language tag="de-DE">language/de-DE/de-DE.com_attlist.sys.ini</language> -->
         </languages>
     </administration>
     <config>
