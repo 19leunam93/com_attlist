@@ -41,7 +41,8 @@ class AttlistController extends JControllerLegacy
 	public function display($cachable = false, $urlparams = false)
 	{
         $app  = JFactory::getApplication();
-        $view = $app->input->getCmd('view', 'meldungen');
+        //$view = $app->input->getCmd('view', 'meldungen');
+        $view = $app->input->getCmd('view', 'meldungform');
 		$app->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);
