@@ -23,4 +23,4 @@ Falls dir die Komponente gefällt, bin ich immer froh um eine kleine Unterstütz
 ## Changelog
 Version |Änderungen
 --------|----------
-v1.0.0| erster Release
+v1.3.0| erster ofizieller Release
