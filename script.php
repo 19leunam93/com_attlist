@@ -80,6 +80,7 @@ class com_attlistInstallerScript
 
       <div class="hero-unit">
         <img src="../media/com_attlist/img/logo.jpg" alt="AttendanceList Logo" width="128" height="128">
+        <p></p>
         <div class="alert alert-success">
           <h3><?php echo JText::sprintf('COM_ATTLIST_UPDATE_TXT', $parent->get('manifest')->version);?></h3>
           <p>
