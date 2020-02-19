@@ -4,10 +4,10 @@
  * 
  * @package    Attlist
  * @subpackage com_attlist
- * @version    1.1.0
+ * @version    1.0.0
  *
  * @author     Manuel Haeusler <tech.spuur@quickline.com>
- * @copyright  2018 Manuel Haeusler
+ * @copyright  2020 Manuel Haeusler
  * @license    GNU/GPL, see LICENSE.php
  *
  * com_attlist is free software. This version may have been modified pursuant

@@ -1,10 +1,10 @@
 <?php 
 
 /**
- * @version    CVS: 1.2.0
+ * @version    1.0.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
- * @copyright  2018 Manuel Häusler
+ * @copyright  2020 Manuel Häusler
  * @license    GNU General Public License Version 2 oder später; siehe LICENSE.txt
  */
 // No direct access
