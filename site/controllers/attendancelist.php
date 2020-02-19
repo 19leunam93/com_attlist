@@ -5,7 +5,7 @@
  * 
  * @package    Attlist
  * @subpackage com_attlist
- * @version    1.0.0
+ * @version    1.3.0
  *
  * @author     Manuel Haeusler <tech.spuur@quickline.com>
  * @copyright  2020 Manuel Haeusler
