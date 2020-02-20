@@ -1,35 +1,35 @@
-.attlist table {
+table.attlist {
     font-family: arial, sans-serif;
     border: 2px solid #000000;
     border-collapse: collapse;
     width: 100%;
 }
-.attlist td, .attlist th {
+table.attlist td, table.attlist th {
     border: 1px solid #000000;
     text-align: left;
     padding: 8px;
 }
-.attlist tr:nth-child(even) {
+table.attlist tr:nth-child(even) {
     background-color: #dddddd;
 }
-.attlist .table_heading {
+.table_heading {
 	font-weight: bold;
 	border: 2px solid #000000;
 }
-.attlist .att-float {
+.att-float {
 	margin-right: 20px;
 }
-.attlist .att-header-element {
+.att-header-element {
 	margin-top: 12px;
 	margin-bottom: 12px;
 	display: inline-block;
 }
-.attlist .card-header {
+.card-header {
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid;
 }
-.attlist .collapse p {
+.collapse p {
 	margin: 5px 0px;
 }
 
