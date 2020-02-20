@@ -53,11 +53,11 @@ class AttlistViewMeldungform extends JViewLegacy
 
 		// get the data from the HTTP POST request
 		$df  = $jinput->post->get('jform');
-		$data['name'] = $df[2];
+		$data['name'] = (string)$_POST['jform']['name'];
 		$data['present'] = $df[3];
 		$data['event_date'] = $df[5];
 		$data['creation_date'] = $df[6];
-		$data['event_title'] = $df[7];
+		$data['event_title'] = (string)$_POST['jform']['event_title'];
 		$data['catid'] = $df[8];
 
 		$meldungen = array();
