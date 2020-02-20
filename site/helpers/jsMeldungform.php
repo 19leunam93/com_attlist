@@ -5,17 +5,17 @@
 		jQuery("#form-meldung").submit(function(event){
 		    event.preventDefault();
 
-		    // catch form data
+		  // catch form data
 			var formData = new FormData(document.getElementById('form-meldung'));
 			formData.append('[token]', '1');
 			formData.append('task', 'checkCall');
 			formData.append('format', 'json');
 
 			var form = jQuery("#form-meldung");
-    		var url_save = form.attr('action');
+    	var url_save = form.attr('action');
 
-    		// Ajax request for check if user already passed a call
-    		var xhr=new XMLHttpRequest();
+    	// Ajax request for check if user already passed a call
+    	var xhr=new XMLHttpRequest();
 			xhr.open("POST", "<?php echo JRoute::_('index.php?option=com_attlist&view=meldungform'); ?>", true);
 			xhr.overrideMimeType('text/plain; charset=utf8');
 
@@ -25,14 +25,38 @@
 				var response = JSON.parse(xhr.response);
 				response = response.data;
 				if (response.count != 0) {
-					if (confirm(response.name+'<?php echo JText::_('COM_ATTLIST_CHECK_1_VIEW_FORM');?>'+response.count+'<?php echo JText::_('COM_ATTLIST_CHECK_2_VIEW_FORM');?>')) {
-						document.getElementById('form-meldung').submit();
+					if (response.count == 1) {
+						var option = '<?php echo JText::_('COM_ATTLIST_OPTION_0_ADJ');?>';
+
+						if (response.last_option == 1) {
+							option = '<?php echo JText::_('COM_ATTLIST_OPTION_1_ADJ');?>';
+						}
+
+						if ( confirm(response.name+', <?php echo JText::_('COM_ATTLIST_CHECK_2_VIEW_FORM');?> '+option+' <?php echo JText::_('COM_ATTLIST_TO_THAT_EVENT');?> <?php echo JText::_('COM_ATTLIST_CHECK_3_VIEW_FORM');?>'))
+						{
+							document.getElementById('form-meldung').submit();
+						}
+						else
+						{
+							location.href = "<?php echo str_replace('&amp;','&',JRoute::_('index.php?option=com_attlist&task=meldungform.cancel')); ?>";
+						}
+
 					} else {
-						location.href = "<?php echo str_replace('&amp;','&',JRoute::_('index.php?option=com_attlist&task=meldungform.cancel')); ?>";
+
+						if ( confirm(response.name+', <?php echo JText::_('COM_ATTLIST_CHECK_1_VIEW_FORM');?> '+response.count+' <?php echo JText::_('COM_ATTLIST_CALL_PL');?> <?php echo JText::_('COM_ATTLIST_TO_THAT_EVENT');?> <?php echo JText::_('COM_ATTLIST_CHECK_3_VIEW_FORM');?>'))
+						{
+							document.getElementById('form-meldung').submit();
+						}
+						else
+						{
+							location.href = "<?php echo str_replace('&amp;','&',JRoute::_('index.php?option=com_attlist&task=meldungform.cancel')); ?>";
+						}
 					}
+
 				} else {
 					document.getElementById('form-meldung').submit();
-				}				
+				}
+
 			} else if (this.status == 403) {
 				alert("Response from server: 403 - Access denied");
 			}

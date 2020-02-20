@@ -38,9 +38,10 @@ class AttlistViewMeldungform extends JViewLegacy
 	        $db = JFactory::getDbo();
 	        //Retrieve the shout
 	        $query = $db->getQuery(true)
-	                    ->select(array('state','name', 'event_date', 'event_title'))
+	                    ->select(array('state','name', 'event_date', 'event_title', 'present'))
 	                    ->from($db->quoteName('#__attlist_item'))
-	                    ->where($db->quoteName('catid') . ' = ' . (int)$catid);
+	                    ->where($db->quoteName('catid') . ' = ' . (int)$catid)
+	                    ->order('creation_date ASC');
 	        // Prepare the query  
 	        $db->setQuery($query);
 	        // Load the row.
@@ -52,16 +53,16 @@ class AttlistViewMeldungform extends JViewLegacy
 
 		// get the data from the HTTP POST request
 		$df  = $jinput->post->get('jform');
-		$data['name'] = (string)$_POST['jform']['name'];
+		$data['name'] = $df[2];
 		$data['present'] = $df[3];
-		$data['event_date'] = $df[4];
-		$data['creation_date'] = $df[5];
-		$data['event_title'] = (string)$_POST['jform']['event_title'];
-		$data['catid'] = $df[7];
+		$data['event_date'] = $df[5];
+		$data['creation_date'] = $df[6];
+		$data['event_title'] = $df[7];
+		$data['catid'] = $df[8];
 
 		$meldungen = array();
 		foreach (getMeldungen($data['catid']) as $key => $meldung) {
-			if ($meldung['name'] == $data['name'] && $meldung['event_date'] == $data['event_date'] && $meldung['event_title'] == $data['event_title']) {
+			if ($meldung['state'] == 1 && $meldung['name'] == $data['name'] && $meldung['event_date'] == $data['event_date'] && $meldung['event_title'] == $data['event_title']) {
 				array_push($meldungen, $meldung);
 			}
 		}
@@ -69,6 +70,7 @@ class AttlistViewMeldungform extends JViewLegacy
 		// create the response
 		$response['name'] = $data['name'];
 		$response['count'] = count($meldungen);
+		$response['last_option'] = end($meldungen)['present'];
 		
 		echo new JResponseJson($response);
 

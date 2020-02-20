@@ -33,7 +33,7 @@
 	  type="textarea"
 	  label="COM_ATTLIST_NOTE"
 	  description="COM_ATTLIST_FORM_DESC_MELDUNG_NOTE"
-	  hint="COM_ATTLIST_NOTE"/>
+	  hint="COM_ATTLIST_NOTE_HINT"/>
     </field>
     <field 
       name="event_date"

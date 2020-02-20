@@ -152,7 +152,7 @@ class AttlistControllerMeldungForm extends JControllerForm
 		$app->setUserState('com_attlist.edit.meldung.id', null);
 
 		// Redirect to the list screen.
-		$this->setMessage(JText::_('COM_ATTLIST_ITEM_SAVED_SUCCESSFULLY'), 'message');
+		$this->setMessage(JText::sprintf('COM_ATTLIST_THANKS',$data['name']).' '.JText::_('COM_ATTLIST_OPTION_'.$data['present'].'_SAVED_SUCCESSFULLY'), 'message');
 		$menu = JFactory::getApplication()->getMenu();
 		$item = $menu->getActive();
 		$config = JFactory::getConfig();
