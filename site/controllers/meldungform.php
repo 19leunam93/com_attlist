@@ -4,10 +4,10 @@
  * 
  * @package    Attlist
  * @subpackage com_attlist
- * @version    1.1.0
+ * @version    1.3.0
  *
  * @author     Manuel Haeusler <tech.spuur@quickline.com>
- * @copyright  2018 Manuel Haeusler
+ * @copyright  2020 Manuel Haeusler
  * @license    GNU/GPL, see LICENSE.php
  *
  * com_attlist is free software. This version may have been modified pursuant
@@ -137,6 +137,7 @@ class AttlistControllerMeldungForm extends JControllerForm
 
 			// Redirect back to the edit screen.
 			$id = (int) $app->getUserState('com_attlist.edit.meldung.id');
+			$menu = $app->getMenu()->getActive();
 			$this->setMessage(JText::sprintf('Save failed', $model->getError()), 'error');
 			$this->setRedirect(JRoute::_('index.php?option=com_attlist&view=meldungform&layout=edit&id=' . $id, false));
 		}
@@ -151,10 +152,18 @@ class AttlistControllerMeldungForm extends JControllerForm
 		$app->setUserState('com_attlist.edit.meldung.id', null);
 
 		// Redirect to the list screen.
-		$this->setMessage(JText::_('COM_ATTLIST_ITEM_SAVED_SUCCESSFULLY'), 'message');
+		$this->setMessage(JText::sprintf('COM_ATTLIST_THANKS',$data['name']).' '.JText::_('COM_ATTLIST_OPTION_'.$data['present'].'_SAVED_SUCCESSFULLY'), 'message');
 		$menu = JFactory::getApplication()->getMenu();
 		$item = $menu->getActive();
-		$url  = (empty($item->link) ? 'index.php?option=com_attlist&view=meldungen' : $item->link);
+		$config = JFactory::getConfig();
+		$sef = $config->get('sef');
+		if (empty($item->link) || empty($item->id)) {
+			$url  = 'index.php?option=com_attlist&view=meldungform';
+		} elseif ($sef) {
+			$url  = 'index.php?option=com_attlist&Itemid=' . $item->id;
+		} else {
+			$url  = $item->link . '&Itemid=' . $item->id;
+		}
 		$this->setRedirect(JRoute::_($url, false));
 
 		// Flush the data from the session.
@@ -186,7 +195,16 @@ class AttlistControllerMeldungForm extends JControllerForm
 
 		$menu = JFactory::getApplication()->getMenu();
 		$item = $menu->getActive();
-		$url  = (empty($item->link) ? 'index.php?option=com_attlist&view=meldungen' : $item->link);
+		$config = JFactory::getConfig();
+		$sef = $config->get('sef');
+		if (empty($item->link) || empty($item->id)) {
+			$url  = 'index.php?option=com_attlist&view=meldungform';
+		} elseif ($sef) {
+			$url  = 'index.php?option=com_attlist&Itemid=' . $item->id;
+		} else {
+			$url  = $item->link . '&Itemid=' . $item->id;
+		}
+		//$url  = (empty($item->link) ? 'index.php?option=com_attlist&view=meldungen' : $item->link);
 		$this->setRedirect(JRoute::_($url, false));
 	}
 

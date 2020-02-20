@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @version    CVS: 1.2.0
+ * @version    1.3.0
  * @package    Com_Attlist
  * @author     Manuel Häusler <tech.spuur@quickline.com>
- * @copyright  2018 Manuel Häusler
+ * @copyright  2020 Manuel Häusler
  * @license    GNU General Public License Version 2 oder später; siehe LICENSE.txt
  */
 // No direct access
@@ -34,7 +34,7 @@ class AttlistViewDashboard extends JViewLegacy
 		//$this->pagination = $this->get('Pagination');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
+		if (!empty($errors = $this->get('Errors')))
 		{
 			JError::raiseError(500, implode('<br />', $errors));
 

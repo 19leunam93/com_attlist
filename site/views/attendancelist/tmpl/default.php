@@ -7,7 +7,7 @@
  * @version    1.1.1
  *
  * @author     Manuel Haeusler <tech.spuur@quickline.com>
- * @copyright  2018 Manuel Haeusler
+ * @copyright  2020 Manuel Haeusler
  * @license    GNU/GPL, see LICENSE.php
  *
  * com_attlist is free software. This version may have been modified pursuant
@@ -16,7 +16,7 @@
  * other free or open source software licenses.
  */
 
-// No direct access
+// No direct access 
 defined('_JEXEC') or die;
 
 // load view specific helper
@@ -108,7 +108,7 @@ list($catName, $moduletitle) = $this->createModuletitle();
 
 		<div id="collapse<?php echo $key;?>" class="collapse show" data-parent="#accordionTable<?php echo $key;?>">
 			
-			<table border="1">
+			<table border="1" class="attlist">
 				<tr class="table_heading">
 					<th width="20%"><?php echo JText::_('COM_ATTLIST_NAME');?></th>
 					<th width="20%"><?php echo JText::_('COM_ATTLIST_CALL_SING');?></th>
