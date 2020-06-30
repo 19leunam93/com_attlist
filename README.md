@@ -23,5 +23,6 @@ Falls dir die Komponente gefällt, bin ich immer froh um eine kleine Unterstütz
 ## Changelog
 Version |Änderungen
 --------|----------
+v1.4.0 | - Updateserver hinzugefügt<br>- update von Sprachkonstanten
 v1.3.0 | - diverse Bugfixes<br>- Formularverhalten verbessert
 v1.2.0| erster ofizieller Release
