@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <extension type="component" version="3.0" method="upgrade">
     <name>com_attlist</name>
-    <creationDate>February 2020</creationDate>
+    <creationDate>June 2020</creationDate>
     <copyright>2020 Manuel Häusler</copyright>
     <license>GNU General Public License Version 2 oder später; siehe LICENSE.txt</license>
     <author>Manuel Häusler</author>
     <authorEmail>tech.spuur@quickline.com</authorEmail>
     <authorUrl>https://tech.spuur.ch</authorUrl>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <description>COM_ATTLIST_XML_DESCRIPTION</description>
     
     <!-- Runs on install/uninstall/update; New in 2.5 -->
@@ -28,6 +28,10 @@
             <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
         </sql>
     </uninstall>
+
+    <updateservers>
+        <server type="extension" priority="2" name="Attendance Lists Updates">https://updates.spuur.ch/attlist_updates.xml</server>
+    </updateservers>
 
     <files folder="site">
         <filename>index.html</filename>
