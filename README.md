@@ -3,7 +3,8 @@ Eine Komponente, um An- und Abmeldungen zu gegebenen Event aufzunehmen. Die Meld
 
 ## Getting Started
 ### Installation
-Lade den neusten Release herunter (https://github.com/Elfangor93/com_attlist/releases/latest). Heruntergeladenens zip kann wie gewohnt mit dem Joomla Installationsmanager installiert werden. Die Komponente ist anschliessend im Joomla!-Backend unter "Komponenten" zu finden.
+Lade den neusten Release herunter (https://github.com/Elfangor93/com_attlist/releases/latest).
+Das heruntergeladene zip kann anschliessend wie gewohnt mit dem Joomla Installationsmanager installiert werden. Die Komponente ist anschliessend im Joomla!-Backend unter "Komponenten" zu finden.
 
 ### Einstellungen
 In den globalen Komponenten-Einstellungen wird erklärt, wie Bezeichnungen mit Language-Overrides den eigenen Wünschen angepasst werden können. Ebenfalls können dort das Template des PDF-Downloads angepasst und die Berechtigungen eingestellt werden.
