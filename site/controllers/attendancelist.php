@@ -51,7 +51,6 @@ class AttlistControllerAttendancelist extends JControllerForm
 		}
 
 		// get the data from the HTTP POST request
-		//$data  = $_POST;
 		$data['eventDate'] = $jinput->post->get('eventDate');
 		$data['eventTitle'] = $jinput->post->get('eventTitle');
 		$data['eventCat'] = $jinput->post->get('eventCat');
