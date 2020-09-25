@@ -1,29 +1,4 @@
 # com_attlist
-Eine Komponente, um An- und Abmeldungen zu gegebenen Event aufzunehmen. Die Meldungen werden pro Event in Anwesenheitslisten geordnet und können in übersichtlichen Tabellen angeschaut oder heruntergeladen werden. Per ACL können die Komponenten-Berechtigungen zum erstellen, bearbeiten oder löschen der Meldungen gesetzt werden.
+This project has moved.
 
-## Getting Started
-### Installation
-Lade den neusten Release herunter (https://github.com/Elfangor93/com_attlist/releases/latest).
-Das heruntergeladene zip kann anschliessend wie gewohnt mit dem Joomla Installationsmanager installiert werden. Die Komponente ist anschliessend im Joomla!-Backend unter "Komponenten" zu finden.
-
-### Einstellungen
-In den globalen Komponenten-Einstellungen wird erklärt, wie Bezeichnungen mit Language-Overrides den eigenen Wünschen angepasst werden können. Ebenfalls können dort das Template des PDF-Downloads angepasst und die Berechtigungen eingestellt werden.
-Alles weitere wird in den jeweiligen Menü-Einstellungen der Ansichten eingestellt.
-
-## Demo
-Eine Demo-Webseite mit der Komponente kann unter https://joomla-demo.spuur.ch/index.php/com-attlist gefunden werden.
-
-## Schritt-für-Schritt Tutorial
-Ein ausführliches Tutorial über die Installation und Konfiguration der Komponente, sowie über die erstellung der Ansichten ist unter https://joomla-demo.spuur.ch/index.php/com-attlist/tutorial zu finden.
-
-## Spenden
-Falls dir die Komponente gefällt, bin ich immer froh um eine kleine Unterstützung meines Webdesign-Hobbys:
-
-[![](https://www.paypalobjects.com/de_DE/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C28HUM53S6EC2&source=url)
-
-## Changelog
-Version |Änderungen
---------|----------
-v1.4.0 | - Updateserver hinzugefügt<br>- update von Sprachkonstanten
-v1.3.0 | - diverse Bugfixes<br>- Formularverhalten verbessert
-v1.2.0| erster ofizieller Release
+You can now find the joomla component "AttendanceLists" on https://www.anwesenheitslisten.ch/en/
